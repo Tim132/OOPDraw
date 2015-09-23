@@ -126,24 +126,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		int x = arg0.getX();
 		int y = arg0.getY();
 			currentComposer.complete(x, y);
-//		else {
-//			// All this jugglery because we do not want to draw oval
-//			// outside the applet area. Also we should be able to draw
-//			// the oval even if our starting point is at bottom right
-//			// and end point is at top left of the applet. Note that
-//			// top-left to top right is the positive x axis and top left
-//			// to left bottom is the positive y axis.
-//			Point drawto = new Point(Math.max(x, startpos.x), Math.max(y, startpos.y));
-//			Point newstart = new Point(Math.min(x, startpos.x), Math.min(y, startpos.y));
-//			nwidth1 = Math.abs((drawto.x - newstart.x));
-//			nheight1 = Math.abs((drawto.y - newstart.y));
-//			drawingShape = (AbstractShape) drawingShape;
-//			drawingShape.setWidth(nwidth1);
-//			drawingShape.setHeight(nheight1);
-//			drawingShape.setStart(newstart);
-//			// increment the index of Vector as
-//			// cOval object is now added at current index i
-//		}
+			shapeList.add(currentComposer);
 		repaint();
 	}
 
@@ -163,25 +146,6 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		int x = arg0.getX();
 		int y = arg0.getY();
 		currentComposer.expand(x, y);
-//		else {
-//			// Here we see where the shape drawing started (mouse went down) and
-//			// now where the mouse is (mouse drag). And we draw from this new
-//			// point to the point from which the mouse went down. This avoids
-//			// the Oval/Rectangle from going out of the screen, or some really
-//			// weird things from happening.
-//			// Try to take simple Line drawing type of approach and draw from
-//			// bottom
-//			// right to top left and see what happens :)
-//			Point drawto = new Point(Math.max(x, startpos.x), Math.max(y, startpos.y));
-//			Point newstart = new Point(Math.min(x, startpos.x), Math.min(y, startpos.y));
-//			nwidth1 = Math.abs((drawto.x - newstart.x));
-//			nheight1 = Math.abs((drawto.y - newstart.y));
-//			drawingShape = (AbstractShape) drawingShape;
-//			drawingShape.setWidth(nwidth1);
-//			drawingShape.setHeight(nheight1);
-//			drawingShape.setStart(newstart);
-//		}
-		shapeList.add(currentComposer);
 		repaint();
 	}
 
