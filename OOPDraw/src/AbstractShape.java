@@ -41,13 +41,21 @@ public abstract class AbstractShape extends Object
 	public abstract void Draw(Graphics2D g);
 
 	public void setHeight(int nheight1) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void setWidth(int nwidth1) {
-		// TODO Auto-generated method stub
-		
+	}
+	
+	public AbstractShape create(int x, int y) {
+		return null;	
+	}
+	
+	public AbstractShape expand (int x, int y) {
+		return null;
+	}
+	
+	public AbstractShape complete(int x, int y) {
+		return null;
 	}
 
 }

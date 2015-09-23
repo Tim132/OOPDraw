@@ -76,21 +76,19 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 
 	private static final long serialVersionUID = 4695753453561082104L;
 
-	private AbstractShape s;
+	private AbstractShape drawingShape;
 
 	private Point startpos, endpos; // Declare the start and end positions
 
 	private Button btnLine, btnOval, btnRect, btnClear;
 
 	//ArrayList for storing the shapes
-	private ArrayList<AbstractShape> vt = new ArrayList<AbstractShape>();
-
-	private int i = 0; // Vector index to keep count of elements(i.e.shapes)
+	private ArrayList<AbstractShape> shapeList = new ArrayList<AbstractShape>();
 
 	private int nheight1, nwidth1;
 	
 	private String currentShape;
-
+	
 	public static void main(String[] args) {
 		OOPDraw2 frame = new OOPDraw2();
 		frame.setVisible(true);
@@ -99,6 +97,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 	public OOPDraw2() {
 		// Do nothing in constructor off applet
 		initGUI();
+		currentShape = "line";
 	}
 
 	@Override
@@ -124,16 +123,15 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		int y = arg0.getY();
 		startpos = new Point(x, y);
 		if (currentShape == "line") {
-			s = new MyLine(); // Create the shape - Line
+			drawingShape = new MyLine(); // Create the shape - Line
 		}
 		if (currentShape == "oval") {
-			s = new MyOval(); // Create the shape - Oval
+			drawingShape = new MyOval(); // Create the shape - Oval
 		}
 		if (currentShape == "rect") {
-			s = new MyRect(); // Create the shape - Rectangle
+			drawingShape = new MyRect(); // Create the shape - Rectangle
 		}	
-		s.setStart(startpos);// Set the start position where mouse went down
-		vt.add(s); // and add the shape (line) to the vector vt
+		drawingShape.setStart(startpos);// Set the start position where mouse went down
 	}
 
 	@Override
@@ -145,8 +143,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		int y = arg0.getY();
 		endpos = new Point(x, y);
 		if (currentShape == "line") {
-			s = (AbstractShape) vt.get(i);
-			s.setEnd(endpos);
+			drawingShape.setEnd(endpos);
 			// increment the index of Vector as
 			// cLine object is now added at current index i
 		}
@@ -161,14 +158,13 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 			Point newstart = new Point(Math.min(x, startpos.x), Math.min(y, startpos.y));
 			nwidth1 = Math.abs((drawto.x - newstart.x));
 			nheight1 = Math.abs((drawto.y - newstart.y));
-			s = (AbstractShape) vt.get(i);
-			s.setWidth(nwidth1);
-			s.setHeight(nheight1);
-			s.setStart(newstart);
+			drawingShape = (AbstractShape) drawingShape;
+			drawingShape.setWidth(nwidth1);
+			drawingShape.setHeight(nheight1);
+			drawingShape.setStart(newstart);
 			// increment the index of Vector as
 			// cOval object is now added at current index i
 		}
-		i++;
 		repaint();
 	}
 
@@ -189,8 +185,8 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		int y = arg0.getY();
 		endpos = new Point(x, y);
 		if (currentShape == "line") {
-			s = (MyLine) vt.get(i); // refer to that shape stored in vector
-			s.setEnd(endpos); // and set its end point.
+			drawingShape = (MyLine) drawingShape; // refer to that shape stored in vector
+			drawingShape.setEnd(endpos); // and set its end point.
 		}
 		else {
 			// Here we see where the shape drawing started (mouse went down) and
@@ -205,11 +201,12 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 			Point newstart = new Point(Math.min(x, startpos.x), Math.min(y, startpos.y));
 			nwidth1 = Math.abs((drawto.x - newstart.x));
 			nheight1 = Math.abs((drawto.y - newstart.y));
-			s = (AbstractShape) vt.get(i);
-			s.setWidth(nwidth1);
-			s.setHeight(nheight1);
-			s.setStart(newstart);
+			drawingShape = (AbstractShape) drawingShape;
+			drawingShape.setWidth(nwidth1);
+			drawingShape.setHeight(nheight1);
+			drawingShape.setStart(newstart);
 		}
+		shapeList.add(drawingShape);
 		repaint();
 	}
 
@@ -230,9 +227,9 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		g.fillRect(0, 0, getSize().width, getSize().height);
 		g.setColor(new Color(255, 255, 154));
 		g.fillRect(1, 1, getSize().width - 3, getSize().height - 3);
-		for (int i = 0; i < vt.size(); i++) {
+		for (int i = 0; i < shapeList.size(); i++) {
 			// Add the shapes to the vector
-			AbstractShape sh = (AbstractShape) vt.get(i);
+			AbstractShape sh = (AbstractShape) shapeList.get(i);
 			sh.Draw((Graphics2D) g);
 		}
 	}
@@ -278,9 +275,8 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 			public void actionPerformed(ActionEvent arg0) {
 				// Clear the entire drawing screen
 				// First remove all elements
-				vt.clear();
+				shapeList.clear();
 				// then make vector index zero
-				i = 0;
 				// finally, call repaint()
 				repaint();
 			}

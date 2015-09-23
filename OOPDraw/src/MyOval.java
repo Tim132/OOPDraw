@@ -39,6 +39,18 @@ class MyOval extends AbstractShape {
 	public int getHeight() {
 		return nheight;
 	}
+	
+	public void create() {
+		
+	}
+	
+	public void expand() {
+		
+	}
+	
+	public void complete() {
+		
+	}
 
 	// Drawing routine
 	public void Draw(Graphics2D g) {
