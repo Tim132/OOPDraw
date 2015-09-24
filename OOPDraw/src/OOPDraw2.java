@@ -28,7 +28,6 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -79,7 +78,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 	private Button btnLine, btnOval, btnRect, btnClear;
 
 	//ArrayList for storing the shapes
-	private ArrayList<ShapeComposer> shapeList = new ArrayList<ShapeComposer>();
+	private ArrayList<AbstractShape> shapeList = new ArrayList<AbstractShape>();
 	
 	private ShapeComposer currentComposer;
 	
@@ -126,17 +125,8 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		int x = arg0.getX();
 		int y = arg0.getY();
 			currentComposer.complete(x, y);
-			shapeList.add(currentComposer);
+			shapeList.add(currentComposer.getShape());
 		repaint();
-		try {
-			currentComposer = currentComposer.getClass().newInstance();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 
 	/*
@@ -154,7 +144,8 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		// current endpoint
 		int x = arg0.getX();
 		int y = arg0.getY();
-		currentComposer.expand(x, y);
+			currentComposer.expand(x, y);
+			shapeList.add(currentComposer.getShape());
 		repaint();
 	}
 
@@ -177,7 +168,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		g.fillRect(1, 1, getSize().width - 3, getSize().height - 3);
 		for (int i = 0; i < shapeList.size(); i++) {
 			// Add the shapes to the vector
-			ShapeComposer sh = (ShapeComposer) shapeList.get(i);
+			AbstractShape sh = (AbstractShape) shapeList.get(i);
 			sh.Draw((Graphics2D) g);
 		}
 	}
