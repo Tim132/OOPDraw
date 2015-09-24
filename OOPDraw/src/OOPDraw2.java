@@ -128,6 +128,15 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 			currentComposer.complete(x, y);
 			shapeList.add(currentComposer);
 		repaint();
+		try {
+			currentComposer = currentComposer.getClass().newInstance();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/*

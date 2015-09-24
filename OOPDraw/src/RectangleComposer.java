@@ -6,6 +6,7 @@ import java.awt.Point;
 public class RectangleComposer implements ShapeComposer {
 
 	private Point start;
+	private Point end;
 	private int width;
 	private int height;
 	
@@ -20,22 +21,18 @@ public class RectangleComposer implements ShapeComposer {
 		Point newstart = new Point(Math.min(x, start.x), Math.min(y, start.y));
 		width = Math.abs((drawto.x - newstart.x));
 		height = Math.abs((drawto.y - newstart.y));
-		start = newstart;
+		end = newstart;
 	}
 
 	@Override
 	public void complete(int x, int y) {
-		Point drawto = new Point(Math.max(x, start.x), Math.max(y, start.y));
-		Point newstart = new Point(Math.min(x, start.x), Math.min(y, start.y));
-		width = Math.abs((drawto.x - newstart.x));
-		height = Math.abs((drawto.y - newstart.y));
-		start = newstart;
+		expand(x, y);
 	}
 
 	@Override
 	public void Draw(Graphics2D g) {
 		g.setColor(Color.blue.brighter()); // Set default color
-		g.drawRect(start.x, start.y, width, height);		
+		g.drawRect(end.x, end.y, width, height);		
 	}
 
 }
