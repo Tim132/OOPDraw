@@ -32,7 +32,7 @@ public class OvalComposer implements ShapeComposer {
 	@Override
 	public void Draw(Graphics2D g) {
 		g.setColor(Color.green.darker()); // Set default color
-		g.drawOval(start.x, start.y, width, height);
+		g.drawOval(end.x, end.y, width, height);
 	}
 
 }
