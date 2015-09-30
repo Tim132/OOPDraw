@@ -1,5 +1,6 @@
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.geom.Line2D;
 
 /**
  *  Class MyLine for drawing lines is
@@ -7,6 +8,8 @@ import java.awt.Point;
  */
 public class MyLine extends AbstractShape {
 
+	private Line2D line;
+	
 	@Override
 	public void setStart(Point pt) {
 		ptStart = pt;
