@@ -10,27 +10,23 @@ public class MyLine extends AbstractShape {
 
 	private Line2D line;
 	
+	public MyLine() {
+		line = new Line2D.Double();
+	}
+	
 	@Override
 	public void setStart(Point pt) {
-		ptStart = pt;
+		line.setLine(pt.x, pt.y, pt.x, pt.y);
 	}
 
 	public void setEnd(Point pt) {
-		ptEnd = pt;
-	}
-
-	public Point getStart() {
-		return ptStart;
-	}
-
-	public Point getEnd() {
-		return ptEnd;
+		line.setLine(line.getX1(), line.getY1(), pt.x, pt.y);
 	}
 
 	// Drawing routine
 	public void Draw(Graphics2D g) {
 		g.setColor(clrFront); // Set default color -you may ignore colors
-		g.drawLine(ptStart.x, ptStart.y, ptEnd.x, ptEnd.y);
+		g.draw(line);
 	}
 }
 

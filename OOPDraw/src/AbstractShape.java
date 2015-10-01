@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.geom.Point2D;
 
 /**
  * base class AbstractShape
@@ -30,7 +31,7 @@ public abstract class AbstractShape extends Object
 
 	public abstract void setEnd(Point pt);
 
-	public Point getStart() {
+	public Point2D getStart() {
 		return ptStart;
 	}
 

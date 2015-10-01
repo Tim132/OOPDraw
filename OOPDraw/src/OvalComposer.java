@@ -19,11 +19,7 @@ public class OvalComposer implements ShapeComposer {
 
 	@Override
 	public void expand(int x, int y) {
-		Point drawto = new Point(Math.max(x, oval.getStart().x), Math.max(y, oval.getStart().y));
-		Point newstart = new Point(Math.min(x, oval.getStart().x), Math.min(y, oval.getStart().y));
-		oval.setWidth(Math.abs((drawto.x - newstart.x)));
-		oval.setHeight(Math.abs((drawto.y - newstart.y)));
-		oval.setEnd(newstart);
+		oval.setEnd(new Point(x, y));
 	}
 
 	@Override
