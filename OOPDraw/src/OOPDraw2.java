@@ -75,7 +75,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 
 	private static final long serialVersionUID = 4695753453561082104L;
 
-	private Button btnLine, btnOval, btnRect, btnClear;
+	private Button btnLine, btnOval, btnRect, btnClear, btnFunny;
 
 	//ArrayList for storing the shapes
 	private ArrayList<AbstractShape> shapeList = new ArrayList<AbstractShape>();
@@ -207,6 +207,14 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 				currentComposer = new RectangleComposer();
 			}
 		});
+		btnFunny = new Button("Funny");
+		btnFunny.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				currentComposer = new FunnyComposer();
+			}
+		});
 		btnClear = new Button("Clear");
 		btnClear.addActionListener(new ActionListener() {
 
@@ -223,6 +231,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 		add(btnLine);
 		add(btnOval);
 		add(btnRect);
+		add(btnFunny);
 		add(btnClear);
 	}
 

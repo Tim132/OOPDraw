@@ -17,11 +17,7 @@ public class RectangleComposer implements ShapeComposer {
 
 	@Override
 	public void expand(int x, int y) {
-		Point drawto = new Point(Math.max(x, rect.getStart().x), Math.max(y, rect.getStart().y));
-		Point newstart = new Point(Math.min(x, rect.getStart().x), Math.min(y, rect.getStart().y));
-		rect.setWidth(Math.abs((drawto.x - newstart.x)));
-		rect.setHeight(Math.abs((drawto.y - newstart.y)));
-		rect.setEnd(newstart);
+		rect.setEnd(new Point(x, y));
 	}
 
 	@Override
