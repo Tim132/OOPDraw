@@ -7,6 +7,7 @@ public class MyFunnyShape extends AbstractShape {
 	private ArrayList<AbstractShape> shapes;
 	
 	public MyFunnyShape() {
+		shapes = new ArrayList<AbstractShape>();
 		MyRect rect = new MyRect();
 		MyLine line = new MyLine();
 		MyOval oval = new MyOval();
