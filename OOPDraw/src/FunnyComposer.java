@@ -4,6 +4,14 @@ import java.awt.Point;
 public class FunnyComposer implements ShapeComposer {
 
 	private MyFunnyShape funny;
+	private static FunnyComposer instance;
+	
+	public static FunnyComposer getInstance() {
+		if(instance == null) {
+			instance = new FunnyComposer();
+		}
+		return instance;
+	}
 	
 	public AbstractShape getShape() {
 		return funny;

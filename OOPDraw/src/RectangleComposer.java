@@ -4,6 +4,14 @@ import java.awt.Point;
 public class RectangleComposer implements ShapeComposer {
 
 	private MyRect rect;
+	private static RectangleComposer instance;
+	
+	public static RectangleComposer getInstance() {
+		if(instance == null) {
+			instance = new RectangleComposer();
+		}
+		return instance;
+	}
 	
 	public AbstractShape getShape() {
 		return rect;

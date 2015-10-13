@@ -3,6 +3,14 @@ import java.awt.Point;
 public class LineComposer implements ShapeComposer {
 
 	private MyLine line;
+	private static LineComposer instance;
+	
+	public static LineComposer getInstance() {
+		if(instance == null) {
+			instance = new LineComposer();
+		}
+		return instance;
+	}
 	
 	public AbstractShape getShape() {
 		return line;

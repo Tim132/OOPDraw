@@ -4,6 +4,14 @@ import java.awt.Point;
 public class OvalComposer implements ShapeComposer {
 
 	private MyOval oval;
+	private static OvalComposer instance;
+	
+	public static OvalComposer getInstance() {
+		if(instance == null) {
+			instance = new OvalComposer();
+		}
+		return instance;
+	}
 	
 	public AbstractShape getShape()
 	{

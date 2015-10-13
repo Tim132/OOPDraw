@@ -188,7 +188,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				currentComposer = new LineComposer();
+				currentComposer = LineComposer.getInstance();
 			}
 		});
 		btnOval = new Button("Oval");
@@ -196,7 +196,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				currentComposer = new OvalComposer();
+				currentComposer = OvalComposer.getInstance();
 			}
 		});
 		btnRect = new Button("Rectangle");
@@ -204,7 +204,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				currentComposer = new RectangleComposer();
+				currentComposer = RectangleComposer.getInstance();
 			}
 		});
 		btnFunny = new Button("Funny");
@@ -212,7 +212,7 @@ public class OOPDraw2 extends JFrame implements MouseListener, MouseMotionListen
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				currentComposer = new FunnyComposer();
+				currentComposer = FunnyComposer.getInstance();
 			}
 		});
 		btnClear = new Button("Clear");
