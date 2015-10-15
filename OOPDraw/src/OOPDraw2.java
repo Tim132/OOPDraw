@@ -37,6 +37,13 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
+import Composers.FunnyComposer;
+import Composers.LineComposer;
+import Composers.OvalComposer;
+import Composers.RectangleComposer;
+import Composers.ShapeComposer;
+import Shapes.AbstractShape;
+
 /**
  * Filename: OOPDraw2.java<br/>
  * Written By: Sunit Katkar<br/>
